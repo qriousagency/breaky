@@ -1,4 +1,3 @@
-
 (function(){
 	var fnIndex = 0;
 	var fnSwitch = {};
@@ -12,10 +11,10 @@
 	    var offItemsLength = offItems.length;
 
 	    for ( var i = 0; i < onItemsLength; i++ ) {
-			if(!fnList[onItems[i]].active) {   	
-				fnList[onItems[i]].fn();
-				fnList[onItems[i]].active = true;
-			}
+  			if(!fnList[onItems[i]].active) {   	
+  				fnList[onItems[i]].fn();
+  				fnList[onItems[i]].active = true;
+  			}
     	}
     	for ( var i = 0; i < offItemsLength; i++ ) {
      		fnList[offItems[i]].active = false;
@@ -28,7 +27,7 @@
         ).getPropertyValue( 'content' ).replace( /\"/g, '' ).replace( /\'/g, '' );
   	}
 
-  	function appendFunction( fn ){
+  	function appendFunction( fn ) {
     	fnIndex++;
     	fnList[fnIndex] = {};
     	fnList[fnIndex]["fn"] = fn;
@@ -88,14 +87,12 @@
           if (timeOut != null) {
             clearTimeout(timeOut);
           }
-
-          timeOut = setTimeout(function(){
-            if(breaky.value !== readValue( "body" )){
+          timeOut = setTimeout(function() {
+            if(breaky.value !== readValue( "body" )) {
               breaky.value = readValue( "body" );
               setSwitch();
             }
           }, 250);
-        	
       	}
 	    }
 	}
