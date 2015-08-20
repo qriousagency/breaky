@@ -1,3 +1,4 @@
+var ie8 = true;
 (function(){
 	var fnIndex = 0;
 	var fnSwitch = {};
@@ -21,7 +22,7 @@
     	}
   	}
 
-	function readValue( el ) {
+	   function readValue( el ) {
     	return window.getComputedStyle(
       		document.querySelector(el), ':before'
         ).getPropertyValue( 'content' ).replace( /\"/g, '' ).replace( /\'/g, '' );
@@ -33,10 +34,19 @@
     	fnList[fnIndex]["fn"] = fn;
     	fnList[fnIndex]["active"] = false;
   	}
-  	
+  	function indexOf (collection, value) {
+        if (Array.prototype.indexOf) {
+            return collection.indexOf( value );
+        }
+        for (var i = 0, l = collection.length; i < l; i++) {
+            if(value === collection[i]) {
+                return i;
+            }
+        }
+    }
   	function connectFunction( view1, direction, view2 ) {
-    	var viewIndex1 = breakpoints.indexOf( view1 );
-    	var viewIndex2 = breakpoints.indexOf( view2 );
+    	var viewIndex1 = indexOf(breakpoints, view1);
+    	var viewIndex2 = indexOf(breakpoints, view2);
 
     	for( var i = 0; i < breakpoints.length; i++ ) {
       		if( i == viewIndex1 && direction == "at"
@@ -68,19 +78,25 @@
   	window.breaky = {
 	    below: function( view, fn ) {
 	    	connectAndAppendFn( fn, view, "below" );
-		},
+		  },
 	    above: function( view, fn ) {
 	    	connectAndAppendFn( fn, view, "above" );
-		},
+		  },
 	    between: function( view1, view2, fn ) {
 	    	connectAndAppendFn( fn, view1, "between", view2 );
 	    },
 	    at : function( view, fn ) {
 	    	connectAndAppendFn( fn, view, "at" );
 	    },
+      initIE8 : function(bp, value) {
+        breakpoints = bp;
+        createFnSwitch();
+        breaky.value = value;
+      },
 	    init : function() {
         var timeOut = null;
   			breakpoints = readValue( "html" ).split( "," );
+        console.log(breakpoints);
   			createFnSwitch();
   			breaky.value = readValue( "body" );
       	window.onresize = function () {
@@ -95,6 +111,10 @@
           }, 250);
       	}
 	    }
-	}
-	breaky.init();
+	   }
+    if(!ie8) {
+      breaky.init();
+    } 
 })();
+
+breaky.initIE8(["mobile","tablet","desktop"], "tablet");
