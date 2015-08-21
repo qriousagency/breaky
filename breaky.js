@@ -1,4 +1,4 @@
-var ie8 = true;
+
 (function(){
 	var fnIndex = 0;
 	var fnSwitch = {};
@@ -89,9 +89,12 @@ var ie8 = true;
 	    	connectAndAppendFn( fn, view, "at" );
 	    },
       initIE8 : function(bp, value) {
-        breakpoints = bp;
-        createFnSwitch();
-        breaky.value = value;
+          if(!window.getComputedStyle) {
+            console.log("hit");
+            breakpoints = bp;
+            createFnSwitch();
+            breaky.value = value;
+          }
       },
 	    init : function() {
         var timeOut = null;
@@ -112,9 +115,8 @@ var ie8 = true;
       	}
 	    }
 	   }
-    if(!ie8) {
+    if(window.getComputedStyle) {
       breaky.init();
     } 
 })();
 
-breaky.initIE8(["mobile","tablet","desktop"], "tablet");
