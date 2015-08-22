@@ -5,6 +5,8 @@
 Lightweight and easy-to-use plugin for Javascript media-queries detection. Includes automated functions
 management to assign functions to specifc breakpoints.
 
+Original Documentation: [http://qrious.com/breaky/](http://qrious.com/breaky/)
+
 SET-UP
 ----
 **Incude:** breaky.js
@@ -67,7 +69,7 @@ breaky.below("desktop", function() {
 });
 ```
 
-Assign a function to one breakpoint: **at()**
+Assign a function to one breakpoint: **between()**
 ```js
 breaky.between("mobile", "tablet", function() {
     // custom logic
