@@ -13,14 +13,14 @@ SET-UP
 ```js
 <script href="breaky.js"></script>
 ```
-**CSS:** Use the psuedo-element :before and property content on the HTML to list the breakpoints for Breaky to detect. Each breakpoints' name must be seperated by commas and in order from smallest to largest viewport. Name it anything and set as many breakpoints as you want.
+**CSS:** Use the pseudo-element :before and property content on the HTML to list the breakpoints for Breaky to detect. Each breakpoints' name must be seperated by commas and in order from smallest to largest viewport. Name it anything and set as many breakpoints as you want.
 ```css
 html:before {
 	content: "mobile,tablet,desktop";
 	display: none;
 }
 ```
-Use the psuedo-element :before and property content on the BODY set media-queries for Breaky to detect. It should follow the same naming convention as the list set in the HTML.
+Use the pseudo-element :before and property content on the BODY set media-queries for Breaky to detect. It should follow the same naming convention as the list set in the HTML.
 
 ```css
 body:before {
@@ -55,21 +55,21 @@ breaky.at("mobile", function() {
 });
 ```
 
-Assign a function to one breakpoint: **above()**
+Assign a function to and above a breakpoint: **above()**
 ```js
 breaky.above("mobile", function() {
     // custom logic
 });
 ```
 
-Assign a function to one breakpoint: **below()**
+Assign a function to and below a breakpoint: **below()**
 ```js
 breaky.below("desktop", function() {
     // custom logic
 });
 ```
 
-Assign a function to one breakpoint: **between()**
+Assign a function between breakpoints: **between()**
 ```js
 breaky.between("mobile", "tablet", function() {
     // custom logic
