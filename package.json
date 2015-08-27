@@ -1,6 +1,6 @@
 {
-  "name": "Revolve",
-  "description": "Revolve BoilerPlate Style Guide",
+  "name": "Breaky.js",
+  "description": "Breaky JavaScript Plugin",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.4",
