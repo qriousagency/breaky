@@ -96,20 +96,14 @@
           }
       },
       init : function() {
-        var timeOut = null;
         breakpoints = readValue( "html" ).split( "," );
         createFnSwitch();
         breaky.value = readValue( "body" );
         window.onresize = function () {
-          if (timeOut != null) {
-            clearTimeout(timeOut);
+          if(breaky.value !== readValue( "body" )) {
+            breaky.value = readValue( "body" );
+            setSwitch();
           }
-          timeOut = setTimeout(function() {
-            if(breaky.value !== readValue( "body" )) {
-              breaky.value = readValue( "body" );
-              setSwitch();
-            }
-          }, 100);
         }
       }
      }
