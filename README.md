@@ -15,7 +15,7 @@ SET-UP
 ```
 **CSS:** Use the pseudo-element :before and property content on the HTML to list the breakpoints for Breaky to detect. Each breakpoints' name must be seperated by commas and in order from smallest to largest viewport. Name it anything and set as many breakpoints as you want.
 ```css
-html:before {
+html:after {
 	content: "mobile,tablet,desktop";
 	display: none;
 }

@@ -22,9 +22,9 @@
       }
     }
 
-     function readValue( el ) {
+     function readValue( el, pseudo ) {
       return window.getComputedStyle(
-          document.querySelector(el), ':before'
+          document.querySelector(el), ':' + pseudo
         ).getPropertyValue( 'content' ).replace( /\"/g, '' ).replace( /\'/g, '' );
     }
 
@@ -96,12 +96,12 @@
           }
       },
       init : function() {
-        breakpoints = readValue( "html" ).split( "," );
+        breakpoints = readValue( "body", "after" ).split( "," );
         createFnSwitch();
-        breaky.value = readValue( "body" );
+        breaky.value = readValue( "body", "before" );
         window.onresize = function () {
-          if(breaky.value !== readValue( "body" )) {
-            breaky.value = readValue( "body" );
+          if(breaky.value !== readValue( "body", "before" )) {
+            breaky.value = readValue( "body", "before" );
             setSwitch();
           }
         }

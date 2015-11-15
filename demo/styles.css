@@ -3,7 +3,7 @@
  * queried by JavaScript to know which breakpoint is active.
  * Add or remove as many breakpoints as you like.
  */
-html:before {
+body:after {
   content: "mobile,tablet,desktop";
   display: none;
 }
