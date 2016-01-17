@@ -7,6 +7,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles.css">
+<script src="../breaky.js"></script>
 </head>
 <body>
 
@@ -14,44 +15,45 @@
 <div class="content">Above and Below - above() / below():<br><span id="message2"></span></div>
 <div class="content">Between - between():<br><span id="message3"></span></div>
 
-<script src="../breaky.js"></script>
+
 <script>
+document.addEventListener("DOMContentLoaded", function(event) {
 
-//Optional Fix for IE8
-breaky.initIE8(["mobile","tablet","desktop"], "desktop");
+	//Optional Fix for IE8
+	breaky.initIE8(["mobile","tablet","desktop"], "desktop");
 
-var message1 = document.getElementById("message1");
-var message2 = document.getElementById("message2");
-var message3 = document.getElementById("message3");
+	var message1 = document.getElementById("message1");
+	var message2 = document.getElementById("message2");
+	var message3 = document.getElementById("message3");
 
 
-// First Message
-breaky.at("mobile", function() {
-	message1.innerHTML = "mobile";
+	// First Message
+	breaky.at("mobile", function() {
+		message1.innerHTML = "mobile";
+	});
+
+	breaky.at("tablet", function() {
+		message1.innerHTML = "tablet";
+	});
+
+	breaky.at("desktop", function() {
+		message1.innerHTML = "desktop";
+	});
+
+
+	// Second Message
+	breaky.below("tablet", function() {
+		message2.innerHTML = "tablet and below";
+	});
+	breaky.above("desktop", function() {
+		message2.innerHTML = "deskop and above";
+	});
+
+	//Third Message
+	breaky.between("mobile", "desktop", function() {
+		message3.innerHTML = "between mobile and desktop";
+	});
 });
-
-breaky.at("tablet", function() {
-	message1.innerHTML = "tablet";
-});
-
-breaky.at("desktop", function() {
-	message1.innerHTML = "desktop";
-});
-
-
-// Second Message
-breaky.below("tablet", function() {
-	message2.innerHTML = "tablet and below";
-});
-breaky.above("desktop", function() {
-	message2.innerHTML = "deskop and above";
-});
-
-//Third Message
-breaky.between("mobile", "desktop", function() {
-	message3.innerHTML = "between mobile and desktop";
-});
-
 
 </script>
         

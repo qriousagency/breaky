@@ -106,9 +106,17 @@
           }
         }
       }
-     }
-    if(window.getComputedStyle) {
-      breaky.init();
-    } 
+    }
+    if(document["body"]) {
+      if(window.getComputedStyle) {
+        breaky.init();
+      } 
+    } else  {
+      document.addEventListener("DOMContentLoaded", function(event) {
+        if(window.getComputedStyle) {
+          breaky.init();
+        }
+      });
+    }
 })();
 
