@@ -1,8 +1,11 @@
 
 (function(){
   var fnIndex = 0;
+  // object that assigns each function to breakpoint and on/offs
   var fnSwitch = {};
+  // object of all functions and active state
   var fnList = {};
+  // All possible breakpoints ex, ["mobile", "tablet", "desktop"]
   var breakpoints = [];
   
     function setSwitch() {
@@ -27,14 +30,16 @@
           document.querySelector(el), ':' + pseudo
         ).getPropertyValue( 'content' ).replace( /\"/g, '' ).replace( /\'/g, '' );
     }
-
+    // Add function to {fnList}
     function appendFunction( fn ) {
       fnIndex++;
       fnList[fnIndex] = {};
       fnList[fnIndex]["fn"] = fn;
       fnList[fnIndex]["active"] = false;
     }
+
     function indexOf (collection, value) {
+        // check if array protype exists if not use our own
         if (Array.prototype.indexOf) {
             return collection.indexOf( value );
         }
@@ -44,9 +49,12 @@
             }
         }
     }
+    // adds function to {fnSwitch}
     function connectFunction( view1, direction, view2 ) {
+      // get index of view 1 and view 2 relative to the breakpoints array
       var viewIndex1 = indexOf(breakpoints, view1);
       var viewIndex2 = indexOf(breakpoints, view2);
+
 
       for( var i = 0; i < breakpoints.length; i++ ) {
           if( i == viewIndex1 && direction == "at"
@@ -61,8 +69,12 @@
       setSwitch();
     }
     
+    // Populates the object {fnSwitch} which will contain
+    // all functions that should be called at certain breakpoints
+    // by setting on and off arrays
     function createFnSwitch() {
       breakpointsLength = breakpoints.length;
+    
       for(var i = 0; i < breakpointsLength; i++ ) {
         fnSwitch[breakpoints[i]] = {};
         fnSwitch[breakpoints[i]].on = [];
@@ -71,10 +83,15 @@
     }
     
     function connectAndAppendFn( fn, view1, direction, view2 ) {
+      // adds function to fnList
       appendFunction( fn );
+
+      // add function to 
       connectFunction( view1, direction, view2 );
     }
 
+
+    // Define breaky
     window.breaky = {
       below: function( view, fn ) {
         connectAndAppendFn( fn, view, "below" );
@@ -96,9 +113,15 @@
           }
       },
       init : function() {
-        breakpoints = readValue( "body", "after" ).split( "," );
+        // get all possible breakpoints
+        breakpoints = readValue( "html", "before" ).split( "," );
+
+        // populate the object fnSwitch with on/off arrays
         createFnSwitch();
+
+        // get the current breakpoint value
         breaky.value = readValue( "body", "before" );
+
         window.onresize = function () {
           if(breaky.value !== readValue( "body", "before" )) {
             breaky.value = readValue( "body", "before" );
@@ -107,6 +130,7 @@
         }
       }
     }
+
     if(document["body"]) {
       if(window.getComputedStyle) {
         breaky.init();
@@ -118,5 +142,7 @@
         }
       });
     }
+    if (typeof exports !== 'undefined') {
+      module.exports = breaky;
+    }
 })();
-
