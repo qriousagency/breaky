@@ -1,7 +1,21 @@
 {
-  "name": "Breaky.js",
+  "name": "breaky",
   "description": "Breaky JavaScript Plugin",
   "version": "0.1.1",
+  "main": "breaky-min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qriousagency/breaky.git"
+  },
+  "author": "Qrious <walter.tlatenchi@gmail.com>",
+  "keywords": [
+    "css",
+    "breakpoints",
+    "responsive",
+    "js",
+    "media-queries"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-cli": "^0.1.13",
