@@ -3,7 +3,7 @@
 **A javascript plug-in for detecting/syncing CSS media-queries**
 
 Lightweight and easy-to-use plugin for Javascript media-queries detection. Includes automated functions
-management to assign functions to specifc breakpoints.
+management to assign functions to specific breakpoints.
 
 Original Documentation: [http://qrious.com/breaky/](http://qrious.com/breaky/)
 
@@ -13,9 +13,9 @@ SET-UP
 ```js
 <script href="breaky.js"></script>
 ```
-**CSS:** Use the pseudo-element :before and property content on the HTML to list the breakpoints for Breaky to detect. Each breakpoints' name must be seperated by commas and in order from smallest to largest viewport. Name it anything and set as many breakpoints as you want.
+**CSS:** Use the pseudo-element :before and property content on the HTML to list the breakpoints for Breaky to detect. Each breakpoints' name must be separated by commas and in order from smallest to largest viewport. Name it anything and set as many breakpoints as you want.
 ```css
-body:after {
+html:before {
 	content: "mobile,tablet,desktop";
 	display: none;
 }
