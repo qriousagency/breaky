@@ -7,12 +7,12 @@ body {
   background-color:#e84444;
   color: white;
 }
-body:after {
+html:before {
   content: "mobile,tablet,desktop";
   display: none;
 }
-body:before {
-  display: none; 
+html:before {
+  display: none;
 }
 @media (min-width: 320px) {
   body:before {

@@ -1,5 +1,5 @@
 
-(function(){
+(function(window, document, exportName, undefined){
   var fnIndex = 0;
   // object that assigns each function to breakpoint and on/offs
   var fnSwitch = {};
@@ -92,7 +92,7 @@
 
 
     // Define breaky
-    window.breaky = {
+    breaky = {
       below: function( view, fn ) {
         connectAndAppendFn( fn, view, "below" );
       },
@@ -142,7 +142,17 @@
         }
       });
     }
-    if (typeof exports !== 'undefined') {
-      module.exports = breaky;
+
+    var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {}));
+    freeGlobal.breaky = breaky;
+
+    if (typeof define === 'function' && define.amd) {
+        define(function() {
+            return breaky;
+        });
+    } else if (typeof module != 'undefined' && module.exports) {
+        module.exports = breaky;
+    } else {
+        window[exportName] = breaky;
     }
-})();
+})(window, document, 'breaky');
