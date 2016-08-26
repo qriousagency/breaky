@@ -7,6 +7,11 @@ management to assign functions to specific breakpoints.
 
 Original Documentation: [http://qrious.com/breaky/](http://qrious.com/breaky/)
 
+DOWNLOAD FROM NPM
+----
+```
+npm install breaky --save
+```
 SET-UP
 ----
 **Incude:** breaky.js
