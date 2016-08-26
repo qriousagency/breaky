@@ -12,7 +12,8 @@ DOWNLOAD FROM NPM
 ```
 npm install breaky --save
 ```
-https://www.npmjs.com/package/breaky
+
+
 SET-UP
 ----
 **Incude:** breaky.js
