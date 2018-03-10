@@ -7,7 +7,7 @@
   var fnList = {};
   // All possible breakpoints ex, ["mobile", "tablet", "desktop"]
   var breakpoints = [];
-  
+
     function setSwitch() {
       var onItems = fnSwitch[breaky.value].on;
       var onItemsLength = onItems.length;
@@ -15,7 +15,7 @@
       var offItemsLength = offItems.length;
 
       for ( var i = 0; i < onItemsLength; i++ ) {
-        if(!fnList[onItems[i]].active) {    
+        if(!fnList[onItems[i]].active) {
           fnList[onItems[i]].fn();
           fnList[onItems[i]].active = true;
         }
@@ -58,38 +58,35 @@
 
       for( var i = 0; i < breakpoints.length; i++ ) {
           if( i == viewIndex1 && direction == "at"
-          || i <= viewIndex1 && direction == "below" 
-          || i >= viewIndex1 && direction == "above" 
+          || i <= viewIndex1 && direction == "below"
+          || i >= viewIndex1 && direction == "above"
           || viewIndex1 <= i && i <= viewIndex2 &&  direction == "between" ) {
-            fnSwitch[breakpoints[i]].on.push( fnIndex );  
+            fnSwitch[breakpoints[i]].on.push( fnIndex );
           } else {
-            fnSwitch[breakpoints[i]].off.push( fnIndex ); 
+            fnSwitch[breakpoints[i]].off.push( fnIndex );
           }
       }
       setSwitch();
     }
-    
     // Populates the object {fnSwitch} which will contain
     // all functions that should be called at certain breakpoints
     // by setting on and off arrays
     function createFnSwitch() {
       breakpointsLength = breakpoints.length;
-    
+
       for(var i = 0; i < breakpointsLength; i++ ) {
         fnSwitch[breakpoints[i]] = {};
         fnSwitch[breakpoints[i]].on = [];
         fnSwitch[breakpoints[i]].off = [];
       }
     }
-    
     function connectAndAppendFn( fn, view1, direction, view2 ) {
       // adds function to fnList
       appendFunction( fn );
 
-      // add function to 
+      // add function to
       connectFunction( view1, direction, view2 );
     }
-
 
     // Define breaky
     breaky = {
@@ -130,22 +127,27 @@
         }
       }
     }
-
     if(document["body"]) {
       if(window.getComputedStyle) {
         breaky.init();
-      } 
+      }
     } else  {
-      document.addEventListener("DOMContentLoaded", function(event) {
-        if(window.getComputedStyle) {
-          breaky.init();
-        }
-      });
+      if(typeof jQuery === 'function') {
+        jQuery(function(){
+          if(window.getComputedStyle) {
+            breaky.init();
+          }
+        });
+      } else {
+        document.addEventListener("DOMContentLoaded", function(event) {
+          if(window.getComputedStyle) {
+            breaky.init();
+          }
+        });
+      }
     }
-
     var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {}));
     freeGlobal.breaky = breaky;
-
     if (typeof define === 'function' && define.amd) {
         define(function() {
             return breaky;
