@@ -1,6 +1,6 @@
 module.exports = {
 	watch: {
-		files: ['*.js'],
+		files: ['*.js', '!*-min.js'],
 		tasks: ['uglify']
 	}
 }

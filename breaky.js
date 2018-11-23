@@ -109,19 +109,21 @@
             breaky.value = value;
           }
       },
-      init : function() {
+      init : function(options) {
+        var availableSelector = options.available || 'meta[name=breaky-available]';
+        var currentSelector = options.currentSelector || 'meta[name=breaky-current]';
         // get all possible breakpoints
-        breakpoints = readValue( "html", "before" ).split( "," );
+        breakpoints = readValue( availableSelector, "before" ).split( "," );
 
         // populate the object fnSwitch with on/off arrays
         createFnSwitch();
 
         // get the current breakpoint value
-        breaky.value = readValue( "body", "before" );
+        breaky.value = readValue( currentSelector, "before" );
 
         window.onresize = function () {
-          if(breaky.value !== readValue( "body", "before" )) {
-            breaky.value = readValue( "body", "before" );
+          if(breaky.value !== readValue( currentSelector, "before" )) {
+            breaky.value = readValue( currentSelector, "before" );
             setSwitch();
           }
         }
