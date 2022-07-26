@@ -3,6 +3,10 @@
   "description": "Breaky JavaScript Plugin",
   "version": "0.1.6",
   "main": "breaky-min.js",
+  "scripts": {
+    "build": "grunt uglify",
+    "watch": "grunt watch"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/qriousagency/breaky.git"

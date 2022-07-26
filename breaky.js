@@ -74,7 +74,7 @@
   // all functions that should be called at certain breakpoints
   // by setting on and off arrays
   function createFnSwitch() {
-    breakpointsLength = breakpoints.length;
+    var breakpointsLength = breakpoints.length;
 
     for (var i = 0; i < breakpointsLength; i++) {
       fnSwitch[breakpoints[i]] = {};
