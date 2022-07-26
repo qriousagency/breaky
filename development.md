@@ -16,3 +16,7 @@ To build project run `npm run build`
    ```
 3. Make your updates and commit locally but don't push
 4. Run `npm np`
+
+### References:
+
+- [How to publish packages to npm (the way the industry does things)](https://zellwk.com/blog/publish-to-npm/)
