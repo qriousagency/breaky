@@ -91,7 +91,7 @@
   }
 
   // Define breaky
-  breaky = {
+  var breaky = {
     below: function (view, fn) {
       connectAndAppendFn(fn, view, 'below');
     },
