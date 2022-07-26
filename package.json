@@ -1,7 +1,7 @@
 {
   "name": "breaky",
   "description": "Breaky JavaScript Plugin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "breaky-min.js",
   "scripts": {
     "build": "grunt uglify",
